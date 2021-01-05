@@ -1,0 +1,774 @@
+.divider {
+  margin-bottom: 0.18em;
+}
+
+.profile-box {
+  margin: 0.9em auto 0;
+  height: 2.52em;
+  width: 7.02em;
+  border-radius: 0.12em;
+  background: #fff;
+  position: relative;
+}
+.profile-box .user-avatar-wrap {
+  position: absolute;
+  left: 50%;
+  top: -0.66em;
+  z-index: 98;
+  margin-left: -0.66em;
+  width: 1.32em;
+  height: 1.32em;
+}
+.profile-box .user-avatar {
+  border: 0.06em solid #fff;
+  border-radius: 100%;
+  overflow: hidden;
+  width: 1.32em;
+  height: 1.32em;
+}
+.profile-box .user-avatar img {
+  width: 100%;
+}
+.profile-box .user-level {
+  position: absolute;
+  right: 0.06em;
+  bottom: 0.06em;
+  width: 0.4em;
+  height: 0.4em;
+  overflow: hidden;
+}
+.profile-box .user-info {
+  text-align: center;
+  padding-top: 0.83em;
+}
+.profile-box .user-info .user-name {
+  font-size: 0.3em;
+  line-height: 0.42em;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.profile-box .user-info .user-name .icon {
+  margin-left: 0.08em;
+  height: 0.36em;
+}
+.profile-box .user-info .link {
+  display: inline-block;
+  margin-top: 0.18em;
+  height: 0.46em;
+  line-height: 0.46em;
+  border: 0.01em solid #d2d2d2;
+  border-radius: 0.22em;
+  width: 1.74em;
+  padding-left: 0.3em;
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/180928_4d93gggd1hiidlf2l8bd2fgl7fhbd_21x26.png)
+    0.22em 0.08em no-repeat;
+  background-size: 0.21em 0.26em;
+}
+.profile-box .user-info .link-member-center {
+  margin-left: 0.4em;
+  color: #a5764e;
+  border: 0.01em solid #bc9570;
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/190626_81b3ib6ihc933d7b30781ck63l9gj_26x25.png)
+    0.22em 0.08em no-repeat;
+  background-size: 0.26em 0.25em;
+}
+.profile-box .user-info {
+  width: 7.02em;
+}
+.profile-box .user-info .user-name {
+  font-size: 0.34em;
+}
+.profile-box .user-member {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 7.02em;
+  height: 1.08em;
+  background-size: 7.02em 1.08em;
+  border-bottom-left-radius: 0.12em;
+  border-bottom-right-radius: 0.12em;
+}
+.profile-box .user-member-v1 {
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/190816_0h7ca153acci0e1l0ejhl8kdakfik_702x108.png)
+    0 0 no-repeat;
+  background-size: 7.02em 1.08em;
+}
+.collection-tips {
+  width: 100%;
+  background-color: #fff;
+}
+.collection-tips .item-wrap {
+  margin-left: 0.35em;
+  border-bottom: 1px solid #e5e5e5;
+}
+.collection-tips .item-wrap .blank {
+  margin-left: -0.35em;
+  width: 7.5em;
+}
+.collection-tips .item-wrap-last {
+  margin-top: -1px;
+  border-bottom: none;
+}
+.collection-tips .collection-header {
+  display: block;
+}
+.collection-tips .collection-header .item-text {
+  height: 1.11em;
+  background: url("https://s10.mogucdn.com/p1/160727/upload_ie4tamrqmu4dsmjqmezdambqgqyde_12x23.png")
+    no-repeat;
+  background-position-x: 6.65em;
+  background-position-y: 0.43em;
+  background-size: 0.12em;
+  overflow: hidden;
+}
+.collection-tips .collection-header .item-text .item-icon {
+  width: 0.74em;
+  height: 1.1em;
+  float: left;
+}
+.collection-tips .collection-header .item-text .item-icon img {
+  display: block;
+  width: 0.44em;
+  height: 0.44em;
+  margin: 0.28em 0.3em 0.28em 0;
+  text-align: center;
+}
+.collection-tips .collection-header .item-text .item-main {
+  width: 6.06em;
+  height: 1.1em;
+  line-height: 1.1em;
+  font-size: 0.32em;
+  color: #333;
+  float: left;
+  white-space: nowrap;
+}
+.collection-tips .collection-header .item-text .item-main .item-title {
+  float: left;
+}
+.collection-tips .collection-header .item-text .item-main .coupon-num {
+  font-size: 0.24em;
+  max-width: 3.5em;
+  float: right;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-right: 0.3em;
+}
+.collection-tips .collection-header .item-text .item-main .coupon-num span {
+  color: #666;
+}
+.collection-tips .collection-header .item-text .item-main .coupon-num-red span {
+  padding: 0.06em 0.14em;
+  border-radius: 0.2em;
+  font-size: 0.22em;
+  background: #ff6464;
+  color: #fff;
+}
+.collection-tips .blank {
+  width: 100%;
+  height: 0.2em;
+  background-color: #f6f6f6;
+}
+.collection-tips .download-bar,
+.collection-tips .guideFollow {
+  margin-left: -0.35em;
+  width: 7.5em;
+}
+.collection-tips .download-image {
+  display: block;
+  width: 7.5em;
+  height: 1.3em;
+  background-color: #fff;
+}
+.bottom-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row nowrap;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 7.5em;
+  height: 0.98em;
+  background-color: #fff;
+  position: fixed;
+  bottom: -0.01em;
+  border-top: 0.01em solid #c5c5c5;
+  z-index: 6;
+}
+.bottom-box .bottom-btn {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.bottom-box .bottom-btn .bottom-title {
+  text-align: center;
+  font-size: 0.32em;
+  color: #333;
+}
+.bottom-box .bottom-btn .bottom-title.active {
+  color: #ff5777;
+}
+.bottom-box-iphoneX {
+  height: 1.5em;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+.box {
+  margin: 0 auto;
+  width: 7.02em;
+  border-radius: 0.12em;
+  background: #fff;
+  margin-bottom: 0.18em;
+}
+.box .box-hd {
+  margin: 0 auto;
+  width: 6.54em;
+  height: 0.8em;
+  line-height: 0.8em;
+  overflow: hidden;
+  border-bottom: 0.01em solid #efefef;
+}
+.box .box-hd .box-title {
+  float: left;
+  font-size: 0.28em;
+  color: #333;
+}
+.box .box-hd .box-tools {
+  float: right;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #999;
+  font-size: 0.22em;
+}
+.box .box-hd .box-tools .box-tools-arrow {
+  width: 0.1em;
+  height: 0.18em;
+  margin-left: 0.07em;
+}
+.box .box-bd {
+  padding: 0.1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+.item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1em;
+  margin: 0.1em 0.18em;
+}
+.item .img-wrap {
+  position: relative;
+  width: 0.5em;
+  /* height: 0.5em; */
+  margin: 0.06em;
+}
+.item .img-wrap .img {
+  width: 100%;
+}
+.item .img-wrap .icon {
+  position: absolute;
+  right: -0.12em;
+  top: -0.08em;
+  height: 0.3em;
+  min-width: 0.3em;
+  padding: 0 0.08em;
+  border-radius: 0.15em;
+  background: #f5342f;
+  color: #fff;
+  text-align: center;
+  line-height: 0.3em;
+}
+.item .img-wrap .icon-2 {
+  right: -0.18em;
+}
+.item .img-wrap .icon-3 {
+  right: -0.22em;
+}
+.item .img-wrap .icon-4 {
+  right: -0.32em;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+.cart-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 2.94em;
+  height: 0.8em;
+  margin: 0 auto;
+  border-bottom: 0.01em solid #efefef;
+}
+.cart-item .cart-item-name {
+  font-size: 0.28em;
+  color: #333;
+}
+.cart-item .cart-item-desc {
+  font-size: 0.22em;
+  color: #999;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1;
+}
+.cart-item .cart-item-arrow {
+  height: 0.18em;
+  width: 0.1em;
+  margin-left: 0.07em;
+}
+.cart-item-last {
+  border-bottom: none;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+.cart-section {
+  margin: 0 auto;
+  width: 7.02em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.18em;
+}
+.cart-section .section {
+  width: 3.42em;
+  height: 2.4em;
+  background: #fff;
+  border-radius: 0.12em;
+  overflow: hidden;
+}
+.cart-section .cart-large {
+  padding: 0.2em 0.24em;
+}
+.cart-section .cart-large .cart-large-name {
+  font-size: 0.28em;
+  color: #333;
+}
+.cart-section .cart-large .cart-large-desc {
+  font-size: 0.22em;
+  color: #999;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cart-section .cart-large .cart-large-desc .cart-large-arrow {
+  width: 0.1em;
+  height: 0.18em;
+  margin-left: 0.07em;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+#views {
+  width: 7.5em;
+}
+.launch-banner {
+  overflow: hidden;
+}
+.login_head-box {
+  width: 100%;
+  height: 1.8em;
+  background-color: #fff;
+}
+.login_head-box .login_user-avatar {
+  width: 1.61em;
+  padding-top: 0.44em;
+  padding-left: 0.4em;
+  height: 1.79em;
+  float: left;
+}
+.login_head-box .login_user-avatar img {
+  border-radius: 50%;
+  width: 1.1em;
+  height: 1.1em;
+}
+.login_head-box .login_user-name {
+  color: #908e8e;
+  line-height: 0.5em;
+  padding-top: 0.7em;
+  margin-left: 0.05em;
+  font-size: 0.32em;
+  float: left;
+}
+.login_head-box .guest_login {
+  display: block;
+  width: 2em;
+  line-height: 0.5em;
+  padding-top: 0.7em;
+  float: right;
+  margin-right: 0.2em;
+  background: url("https://s10.mogucdn.com/p1/160727/upload_ie4tamrqmu4dsmjqmezdambqgqyde_12x23.png")
+    no-repeat;
+  background-position-x: 1.7em;
+  background-position-y: 0.73em;
+  background-size: 0.2em;
+}
+.login_head-box .guest_login .login_to {
+  font-size: 0.36em;
+  color: #5f5e5e;
+}
+.content-box {
+  background-color: #f6f6f6;
+  width: 100%;
+  padding-bottom: 1.3em;
+  overflow: hidden;
+}
+.content-box .out-content {
+  width: 7.5em;
+  margin-top: 0.3em;
+}
+.content-box .out-content .logout {
+  display: block;
+  width: 6.6em;
+  height: 0.8em;
+  line-height: 0.8em;
+  color: #fff;
+  background-color: #ff5777;
+  font-size: 0.3em;
+  margin: 0 auto;
+  border-radius: 0.04em;
+  text-align: center;
+}
+.content-box-iphoneX {
+  padding-bottom: 1.8em;
+}
+.eleven-place {
+  width: 7.5em;
+  height: 2.5em;
+  background-color: #efefef;
+}
+.eleven-place + .content-box .order-info {
+  margin-top: 0;
+}
+.eleven-place .eleven-place-items {
+  float: left;
+}
+.eleven-place .eleven-place-items .eleven-place-image {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0.3em 0 0 0.3em;
+  border-radius: 50%;
+}
+.eleven-place .eleven-place-items .eleven-place-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+.eleven-place .eleven-place-items .eleven-place-title {
+  width: 1.5em;
+  line-height: 0.28em;
+  font-size: 0.28em;
+  color: #333;
+  text-align: center;
+  margin: 0.15em 0 0 0.3em;
+}
+.wechat-follow {
+  margin-top: 0.2em;
+}
+.divider {
+  margin-bottom: 0.18em;
+}
+body {
+  background-color: #efefef;
+}
+.with-footer {
+  margin-bottom: 1.2em;
+}
+.wchat-follow {
+  margin: 0 auto !important;
+  width: 7.02em !important;
+  border-radius: 0.12em !important;
+  margin-bottom: 0.18em !important;
+  overflow: hidden;
+}
+.out-content {
+  width: 7.5em;
+}
+.out-content .logout {
+  display: block;
+  width: 7.02em;
+  height: 0.8em;
+  line-height: 0.8em;
+  color: #fff;
+  background-color: #ff5777;
+  font-size: 0.3em;
+  margin: 0 auto;
+  border-radius: 0.04em;
+  text-align: center;
+  margin-bottom: 0.18em;
+}
+.launch-banner .launch-banner-wrapper {
+  height: 0;
+  transition: height 0.5s ease-in;
+}
+.launch-banner .launch-banner {
+  z-index: 999;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid #c5c5c5;
+}
+.launch-banner .launch-banner-content {
+  flex-grow: 1;
+  margin-left: 0.3em;
+  margin-top: 0.17em;
+}
+.launch-banner .launch-banner-logo {
+  float: left;
+  width: 0.6em;
+  height: 0.6em;
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/190219_4ii32ja6gi9hdeb56k2487ce7eh24_60x60.png)
+    center center no-repeat;
+  background-size: contain;
+}
+.launch-banner .launch-banner-desc {
+  float: left;
+  margin-left: 0.22em;
+}
+.launch-banner .launch-banner-desc .main-title {
+  width: 100%;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.26em;
+}
+.launch-banner .sub-title-wrapper {
+  margin-top: 0.06em;
+  display: flex;
+  align-items: center;
+  line-height: normal;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.launch-banner .launch-banner-open span {
+  font-size: 0.24em;
+  display: block;
+}
+.launch-banner .star {
+  width: 0.18em;
+  height: 0.17em;
+  margin-right: 0.08em;
+}
+.launch-banner .launch-banner-desc .star-last {
+  margin-right: 0.2em;
+}
+.launch-banner .launch-banner-desc .sub-title {
+  color: #8e8e92;
+  font-size: 0.2em;
+}
+.launch-banner .launch-banner-open {
+  margin-top: 0.17em;
+  margin-right: 0.3em;
+  width: 1.5em;
+  height: 0.5em;
+  line-height: 0.5em;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f46;
+  border-radius: 0.06em;
+}
+/* 会员中心 */
+
+.head-box {
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/190819_1j85g48lc84kk8deg00f66fk53dlc_750x229.png)
+    0 -0.44em no-repeat;
+  background-size: 7.5em 2.29em;
+  overflow: hidden;
+  margin-bottom: 0.18em;
+  font-size: 50px;
+}
+.profile-box {
+  margin: 0.9em auto 0;
+  height: 2.52em;
+  width: 7.02em;
+  border-radius: 0.12em;
+  background: #fff;
+  position: relative;
+}
+.profile-box .user-avatar-wrap {
+  position: absolute;
+  left: 50%;
+  top: -0.66em;
+  z-index: 98;
+  margin-left: -0.66em;
+  width: 1.32em;
+  height: 1.32em;
+}
+.profile-box .user-avatar {
+  border: 0.06em solid #fff;
+  border-radius: 100%;
+  overflow: hidden;
+  width: 1.32em;
+  height: 1.32em;
+}
+.profile-box .user-avatar img {
+  width: 100%;
+}
+.profile-box .user-level {
+  position: absolute;
+  right: 0.06em;
+  bottom: 0.06em;
+  width: 0.4em;
+  height: 0.4em;
+  overflow: hidden;
+}
+.profile-box .user-info {
+  width: 7.02em;
+}
+.profile-box .user-info {
+  text-align: center;
+  padding-top: 0.83em;
+}
+.profile-box .user-info .user-name {
+  font-size: 0.34em;
+}
+.profile-box .user-info .user-name {
+  font-size: 0.3em;
+  line-height: 0.42em;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.profile-box .user-member {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 7.02em;
+  height: 1.08em;
+  background-size: 7.02em 1.08em;
+  border-bottom-left-radius: 0.12em;
+  border-bottom-right-radius: 0.12em;
+}
+.title {
+  font-size: 0.25em;
+}
+/*# sourceMappingURL=index.css.map*/
