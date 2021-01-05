@@ -17,16 +17,17 @@
         >我</van-tabbar-item
       >
     </van-tabbar>
-  </div> </template
+  </div>
+</template
 >zhibo
 
 <script>
 export default {
   data() {
     return {
-      active: 0, //vant图标变量的值
+      active: 0 //vant图标变量的值
     };
-  },
+  }
 };
 </script>
 
