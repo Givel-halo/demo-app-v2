@@ -72,7 +72,6 @@ export default {
     add() {
       if (this.list.indexOf(this.txt) == -1) {
         this.list.push(this.txt);
-        //   console.log(this.list);
       }
       localStorage.setItem("list", JSON.stringify(this.list));
       this.$router.push({
