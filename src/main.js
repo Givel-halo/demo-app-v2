@@ -7,12 +7,12 @@ import Vant from "vant";
 import "vant/lib/index.css";
 
 const $eventBus = new Vue();
-Vue.prototype.$eventBus = $eventBus;
-Vue.config.productionTip = false;
+Vue.prototype.$eventBus = $eventBus
+Vue.config.productionTip = false
 
-Vue.use(Vant);
+Vue.use(Vant)
 
 new Vue({
   render: (h) => h(App),
   router,
-}).$mount("#app");
+}).$mount("#app")
