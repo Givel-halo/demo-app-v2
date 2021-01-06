@@ -100,11 +100,10 @@ export default {
 .top span {
   width: 15rem;
   background: #eee;
-  border: 1px solid;
   display: flex;
-  height: 1.7rem;
+  height: 1.9rem;
   align-items: center;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 .mid {
   font-size: 1.7rem;
@@ -112,6 +111,7 @@ export default {
 .sma {
   font-size: 1rem;
   display: inline-block;
+  margin-right: 0.3rem;
 }
 .red {
   color: red;
