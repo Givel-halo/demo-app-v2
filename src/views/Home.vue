@@ -3,7 +3,7 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'List'
+          name: 'bb'
         }"
       >
         <van-icon class="mid red" name="flower-o"
@@ -55,7 +55,6 @@ export default {
 
   async created() {
     this.categories = await loadCategories().then(res => res.data.categories);
-    console.log(banners);
     this.banners = banners.banners;
   }
 };
@@ -70,17 +69,18 @@ export default {
 .top span {
   width: 15rem;
   background: #eee;
-  border: 1px solid;
+
   display: flex;
   height: 1.7rem;
   align-items: center;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 .mid {
   font-size: 1.7rem;
 }
 .sma {
   font-size: 1rem;
+  margin-right: 0.3rem;
 }
 .red {
   color: red;

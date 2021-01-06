@@ -1,18 +1,9 @@
 <template>
   <div class="ss">
     <div class="top">
-      <router-link
-        :to="{
-          name: 'List'
-        }"
-      >
-        <van-icon class="mid" name="arrow-left"
-      /></router-link>
-
+      <van-icon @click="goback" class="mid" name="arrow-left" />
       <input type="text" v-model="txt" @keyup.enter="add" />
-      <!-- <router-link :to="{ name: 'Search', query: { name: this.txt } }"> -->
       <van-icon class="mid" name="search" @click="add" />
-      <!-- </router-link> -->
     </div>
     <div class="history">
       <div class="h1">
@@ -21,12 +12,16 @@
           ><van-icon class="sma" name="delete-o" @click="del" />
         </p>
         <div class="con">
-          <span v-for="i in res" :key="i">{{ i }}</span>
+          <span v-for="i in res" :key="i">
+            <router-link :to="{ name: 'Search', query: { name: i } }"
+              ><span>{{ i }}</span></router-link
+            ></span
+          >
         </div>
       </div>
       <div class="h2">
         <p>
-          <span><van-icon name="star-o" />热门搜索</span>
+          <span><van-icon class="red" name="star-o" />热门搜索</span>
         </p>
         <div class="categories">
           <div class="item" v-for="i in categories" :key="i._id">
@@ -65,10 +60,17 @@ export default {
     if (localStorage.getItem("list")) {
       this.list = JSON.parse(localStorage.getItem("list"));
     }
-
     this.categories = await loadCategories().then(res => res.data.categories);
   },
+  watch: {
+    $route() {
+      this.del();
+    }
+  },
   methods: {
+    goback() {
+      this.$router.go(-1);
+    },
     add() {
       if (this.list.indexOf(this.txt) == -1) {
         this.list.push(this.txt);
@@ -83,6 +85,7 @@ export default {
     },
 
     del() {
+      alert("确定删除吗");
       localStorage.removeItem("list");
     }
   }
@@ -90,6 +93,9 @@ export default {
 </script>
 
 <style scoped>
+.red {
+  color: red;
+}
 .top {
   display: flex;
   justify-content: space-around;
@@ -119,6 +125,9 @@ export default {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
+.history p span {
+  font-size: 1.2rem;
+}
 .history p {
   display: flex;
   width: 90%;
@@ -140,7 +149,7 @@ p span {
 }
 .con span {
   width: 2.3rem;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
 }
 .categories {
   display: flex;

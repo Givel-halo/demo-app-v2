@@ -1,6 +1,7 @@
 <template>
   <div class="search">
     <div class="top">
+<<<<<<< HEAD
       <router-link
         :to="{
           name: 'List',
@@ -8,6 +9,9 @@
       >
         <van-icon class="mid" name="arrow-left" />
       </router-link>
+=======
+      <van-icon @click="goback" class="mid" name="arrow-left" />
+>>>>>>> 1c0ceea0a5f4e49c1d516aadc7492083c2efe89a
       <router-link
         :to="{
           name: 'Ss',
@@ -33,8 +37,13 @@
           :to="{
             name: 'Detail',
             query: {
+<<<<<<< HEAD
               id: i._id,
             },
+=======
+              id: i._id
+            }
+>>>>>>> 1c0ceea0a5f4e49c1d516aadc7492083c2efe89a
           }"
         >
           <img :src="i.coverImg" alt="i.name" />
@@ -66,8 +75,15 @@ export default {
     this.loadMore();
   },
   methods: {
+    goback() {
+      this.$router.go(-1);
+    },
     async loadMore() {
-      const res = await loadProductAPI(this.page, this.$route.query.id);
+      const res = await loadProductAPI(
+        this.page,
+        this.$route.query.id,
+        this.$route.query.name
+      );
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];
@@ -85,17 +101,17 @@ export default {
 .top span {
   width: 15rem;
   background: #eee;
-  border: 1px solid;
   display: flex;
   height: 1.7rem;
   align-items: center;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 .mid {
   font-size: 1.7rem;
 }
 .sma {
   font-size: 1rem;
+  margin-right: 0.3rem;
 }
 .red {
   color: red;
