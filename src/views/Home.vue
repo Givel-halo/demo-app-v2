@@ -3,7 +3,7 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'List'
+          name: 'bb'
         }"
       >
         <van-icon class="mid red" name="flower-o"

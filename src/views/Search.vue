@@ -1,13 +1,7 @@
 <template>
   <div class="search">
     <div class="top">
-      <router-link
-        :to="{
-          name: 'List'
-        }"
-      >
-        <van-icon class="mid" name="arrow-left" />
-      </router-link>
+      <van-icon @click="goback" class="mid" name="arrow-left" />
       <router-link
         :to="{
           name: 'Ss',
@@ -66,8 +60,15 @@ export default {
     this.loadMore();
   },
   methods: {
+    goback() {
+      this.$router.go(-1);
+    },
     async loadMore() {
-      const res = await loadProductAPI(this.page, this.$route.query.id);
+      const res = await loadProductAPI(
+        this.page,
+        this.$route.query.id,
+        this.$route.query.name
+      );
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];

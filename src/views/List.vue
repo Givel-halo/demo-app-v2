@@ -1,13 +1,7 @@
 <template>
   <div class="list">
     <div class="top">
-      <router-link
-        :to="{
-          name: 'List'
-        }"
-      >
-        <van-icon class="mid red" name="chat-o"
-      /></router-link>
+      <van-icon class="mid red" name="chat-o" />
       <router-link
         :to="{
           name: 'Ss'
