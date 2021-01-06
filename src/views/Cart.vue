@@ -146,11 +146,7 @@ export default {
       this.clg.forEach((item) => arr.push(item._id));
       console.log(arr);
       await delcartid(arr);
-
       this.list = this.list.filter((item) => item.checked == false);
-      if (this.list.filter((item) => item.checked == true)) {
-        console.log(this.list);
-      }
       alert("删除");
     },
   },

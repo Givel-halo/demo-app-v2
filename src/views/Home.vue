@@ -3,14 +3,14 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'bb'
+          name: 'bb',
         }"
       >
         <van-icon class="mid red" name="flower-o"
       /></router-link>
       <router-link
         :to="{
-          name: 'Ss'
+          name: 'Ss',
         }"
       >
         <span><van-icon class="sma" name="search" />羽绒服</span>
@@ -30,8 +30,8 @@
             name: 'Search',
             query: {
               id: i._id,
-              name: i.name
-            }
+              name: i.name,
+            },
           }"
           ><img :src="i.coverImg" :alt="i.name" />
           <p>{{ i.name }}</p>
@@ -49,14 +49,14 @@ export default {
   data() {
     return {
       categories: [],
-      banners: []
+      banners: [],
     };
   },
 
   async created() {
-    this.categories = await loadCategories().then(res => res.data.categories);
+    this.categories = await loadCategories().then((res) => res.data.categories);
     this.banners = banners.banners;
-  }
+  },
 };
 </script>
 <style scoped>
@@ -87,7 +87,6 @@ export default {
 }
 .my-swipe img {
   width: 100%;
-  height: 10rem;
   background: cornsilk;
 }
 
@@ -112,7 +111,6 @@ export default {
 }
 .item img {
   width: 86%;
-  height: 3.5rem;
   background: oldlace;
   border-radius: 50%;
 }

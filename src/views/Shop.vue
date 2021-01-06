@@ -3,14 +3,14 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'List'
+          name: 'List',
         }"
       >
         <van-icon class="mid red" name="flower-o"
       /></router-link>
       <router-link
         :to="{
-          name: 'Ss'
+          name: 'Ss',
         }"
       >
         <span><van-icon class="sma" name="search" />羽绒服</span>
@@ -26,8 +26,8 @@
             name: 'Search',
             query: {
               id: i._id,
-              name: i.name
-            }
+              name: i.name,
+            },
           }"
           ><img :src="i.coverImg" :alt="i.name" />
           <p>{{ i.name }}</p>
@@ -42,8 +42,8 @@
             :to="{
               name: 'Detail',
               qurey: {
-                id: i._id
-              }
+                id: i._id,
+              },
             }"
           >
             <img :src="i.coverImg" alt="i.name" />
@@ -72,11 +72,11 @@ export default {
     return {
       categories: [],
       list: [],
-      page: 1
+      page: 1,
     };
   },
   async created() {
-    this.categories = await loadCategories().then(res => res.data.categories);
+    this.categories = await loadCategories().then((res) => res.data.categories);
     this.loadmore();
   },
   methods: {
@@ -85,8 +85,8 @@ export default {
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -119,7 +119,9 @@ export default {
 .categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: space-between;
+  height: 100%;
 }
 
 .item {
@@ -138,7 +140,6 @@ export default {
 }
 .item img {
   width: 86%;
-  height: 3.5rem;
   background: oldlace;
   border-radius: 50%;
 }
@@ -154,18 +155,19 @@ export default {
   display: flex;
   align-items: center;
   font-size: 0.8rem;
+  margin: 2rem 0;
 }
 .product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .product .i {
   width: 48%;
-  height: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-content: space-between;
 
   /* align-items: ; */
 }
@@ -174,8 +176,6 @@ export default {
 }
 .product img {
   width: 100%;
-  height: 8rem;
-  /* height: 6rem; */
 }
 .product p:nth-of-type(2) {
   display: flex;

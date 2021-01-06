@@ -1,7 +1,6 @@
 <template>
   <div class="search">
     <div class="top">
-<<<<<<< HEAD
       <router-link
         :to="{
           name: 'List',
@@ -9,9 +8,7 @@
       >
         <van-icon class="mid" name="arrow-left" />
       </router-link>
-=======
       <van-icon @click="goback" class="mid" name="arrow-left" />
->>>>>>> 1c0ceea0a5f4e49c1d516aadc7492083c2efe89a
       <router-link
         :to="{
           name: 'Ss',
@@ -37,13 +34,8 @@
           :to="{
             name: 'Detail',
             query: {
-<<<<<<< HEAD
               id: i._id,
             },
-=======
-              id: i._id
-            }
->>>>>>> 1c0ceea0a5f4e49c1d516aadc7492083c2efe89a
           }"
         >
           <img :src="i.coverImg" alt="i.name" />
