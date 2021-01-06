@@ -38,9 +38,9 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: () => import("../views/Cart.vue"),
-    meta: {
-      needLogin: true,
-    },
+    // meta: {
+    //   needLogin: true,
+    // },
   },
   {
     path: "/user",

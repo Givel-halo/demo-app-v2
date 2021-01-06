@@ -1,5 +1,6 @@
 <template>
   <div class="detail">
+    <!-- 顶部app -->
     <div id="launchBanner" class=" launch-banner" style="font-size: 50px;">
       <div class="launch-banner-wrapper" style="height: 0.94em;">
         <div class="launch-banner" style="height: 0.94em;">
@@ -32,17 +33,63 @@
         </div>
       </div>
     </div>
+    <!-- 底部加入购物车样式 -->
     <van-goods-action style="z-index:99;"
       ><van-goods-action-icon icon="shop-o" text="店铺" />
       <van-goods-action-icon icon="chat-o" text="客服" color="#ee0a24" />
-      <van-goods-action-icon icon="star" text="收藏" color="#ff5000" />
+      <van-goods-action-icon
+        icon="star-o"
+        text="收藏"
+        v-show="shoucang"
+        @click="shoucang = !shoucang"
+      />
+      <van-goods-action-icon
+        icon="star"
+        text="已收藏"
+        v-show="!shoucang"
+        @click="shoucang = !shoucang"
+        color="#ff5000"
+      />
       <van-goods-action-button
         color="#ffd4b1"
         type="primary"
         text="加入购物车"
+        @click="show = !show"
       />
       <van-goods-action-button color="#ff5081" type="danger" text="立即购买" />
     </van-goods-action>
+    <!-- 消息通知 -->
+    <van-notify v-model="shownew" type="danger">
+      <van-icon name="goods-collect-o" size="30" style="margin-right: 4px;" />
+      <span>已加入购物车</span>
+    </van-notify>
+    <!-- 弹出加入购物车 -->
+    <van-popup
+      v-model="show"
+      closeable
+      position="bottom"
+      :style="{ height: '70%' }"
+    >
+      <div class="cartcontent">
+        <span class="botimg"><img :src="model.coverImg" alt="图片"/></span>
+        <span class="botprice">￥{{ (model.price / 100).toFixed(2) }}</span
+        ><br />
+        <span class="botkucun">库存{{ model.quantity }}件</span>
+        <span class="num"
+          ><br />
+          数量</span
+        ><van-stepper
+          style="padding-left:1.6rem;padding-bottom:12rem"
+          v-model="value"
+          min="1"
+          :max="model.quantity"
+        />
+        <van-button type="primary" @click="toaddcart" color="#ff498b" block
+          >确定</van-button
+        >
+      </div>
+    </van-popup>
+    <!-- 商品简介 -->
     <div class="con">
       <div class="con_top">
         <span class="iconleft"
@@ -78,6 +125,7 @@
         <span>免邮费</span>
       </div>
     </div>
+    <!-- 白富美 -->
     <div class="component-bfm-bar">
       <a
         class="meili-mgj-baifumei-bar"
@@ -93,12 +141,15 @@
         </span>
       </a>
     </div>
+    <!-- 接口商品详情 -->
     <div class="p-content" v-html="model.content"></div>
+    <!-- 防止遮挡 -->
     <div class="bott"></div>
   </div>
 </template>
 
 <script>
+import { addTocart } from "../services/shop_cart";
 import { loadDetailById } from "../services/detail";
 export default {
   name: "Detail",
@@ -111,235 +162,35 @@ export default {
         name: "Cart",
       });
     },
+    async toaddcart() {
+      const res = await addTocart(this.$route.query.id, this.value);
+      console.log(res.data);
+      this.shownew = true;
+      this.show = false;
+      setTimeout(() => {
+        this.shownew = false;
+        this.$router.push({
+          name: "Cart",
+        });
+      }, 500);
+    },
   },
   data() {
     return {
       model: {},
+      show: false,
+      value: "",
+      shownew: false,
+      shoucang: true,
     };
   },
   async created() {
     this.model = (await loadDetailById(this.$route.query.id)).data;
+    console.log(this.model);
   },
 };
 </script>
 
 <style>
-.detail .bott {
-  height: 3rem;
-}
-.meili-mgj-baifumei-bar {
-  display: block;
-  box-sizing: content-box;
-  height: 3rem;
-  line-height: 3rem;
-  padding: 0 1rem;
-  font-size: 0.8rem;
-  background: #fff;
-  border-top: 0.6rem solid #eaeaea;
-  border-bottom: 0.6rem solid #eaeaea;
-  text-decoration: none;
-  margin: 0.4rem auto;
-}
-.meili-mgj-baifumei-bar .left-icon {
-  vertical-align: -0.3rem;
-  width: 1.5rem;
-  margin-right: 0.4rem;
-}
-.meili-mgj-baifumei-bar .left-text {
-  color: #333;
-}
-.meili-mgj-baifumei-bar .right {
-  float: right;
-  color: #999;
-}
-.title-wrap {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-.ellipsis-2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.title-and-tag {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -moz-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin: 0 0.4rem;
-}
-.title {
-  font-size: 0.8rem;
-  line-height: 0.42rem;
-}
-.component__pickforme {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #f8f8f8;
-  color: #999;
-  padding: 0 0.6rem 0 0.6rem;
-  font-size: 0.6rem;
-  height: 1.5rem;
-  border-top-left-radius: 1.5rem;
-  border-bottom-left-radius: 1.5rem;
-}
-.component__pickforme .pickforme__icon {
-  margin-right: 0.3rem;
-}
-.detail .item {
-  width: 100%;
-  text-align: left;
-  padding: 0.4rem 0.3rem;
-}
-.detail .item span {
-  display: inline-block;
-  width: 100%;
-  text-align: left;
-  font-size: 0.6rem;
-  color: #8e8e92;
-}
-.detail .con {
-  padding: 0.8rem;
-}
-.detail .con,
-.p-content {
-  width: 95%;
-  margin: 0 auto;
-  overflow: hidden;
-  background: #fff;
-}
-.detail .con_top {
-  position: absolute;
-  top: 4rem;
-  left: 0;
-  z-index: 11;
-  width: 100%;
-  padding: 0 1.5rem;
-  overflow: hidden;
-}
-.detail .con_top span {
-  display: inline-block;
-  width: 2.8rem;
-  height: 2.8rem;
-  line-height: 3.3rem;
-  padding-left: 0.3rem;
-  border-radius: 50%;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.4);
-  font-size: 1.8rem;
-  font-weight: 900;
-}
-.detail .con_top span:nth-of-type(2) {
-  float: right;
-}
-
-.detail img {
-  width: 100%;
-}
-.detail .price span {
-  font-size: 2rem;
-}
-/* -----------顶部app */
-.launch-banner .launch-banner-wrapper {
-  height: 0;
-  transition: height 0.5s ease-in;
-}
-.launch-banner .launch-banner {
-  z-index: 999;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: -webkit-flex;
-  display: flex;
-  overflow: hidden;
-  background: #fff;
-  border-bottom: 1px solid #c5c5c5;
-}
-.launch-banner .launch-banner-content {
-  flex-grow: 1;
-  margin-left: 0.3em;
-  margin-top: 0.17em;
-}
-.launch-banner .launch-banner-logo {
-  float: left;
-  width: 0.6em;
-  height: 0.6em;
-  background: url(https://s10.mogucdn.com/mlcdn/c45406/190219_4ii32ja6gi9hdeb56k2487ce7eh24_60x60.png)
-    center center no-repeat;
-  background-size: contain;
-}
-.launch-banner .launch-banner-desc {
-  float: left;
-  margin-left: 0.22em;
-}
-.launch-banner .launch-banner-desc .main-title {
-  width: 100%;
-  color: #000;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.26em;
-}
-.launch-banner .sub-title-wrapper {
-  margin-top: 0.06em;
-  display: flex;
-  align-items: center;
-  line-height: normal;
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.launch-banner .launch-banner-open span {
-  font-size: 0.24em;
-  display: block;
-}
-.launch-banner .star {
-  width: 0.18em;
-  height: 0.17em;
-  margin-right: 0.08em;
-}
-.launch-banner .launch-banner-desc .star-last {
-  margin-right: 0.2em;
-}
-.launch-banner .launch-banner-desc .sub-title {
-  color: #8e8e92;
-  font-size: 0.2em;
-}
-.launch-banner .launch-banner-open {
-  margin-top: 0.17em;
-  margin-right: 0.3em;
-  width: 1.5em;
-  height: 0.5em;
-  line-height: 0.5em;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  background-color: #f46;
-  border-radius: 0.06em;
-}
+@import "../assets/detail.css";
 </style>

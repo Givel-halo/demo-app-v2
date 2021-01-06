@@ -3,7 +3,7 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'List'
+          name: 'List',
         }"
       >
         <van-icon class="mid" name="arrow-left" />
@@ -12,8 +12,8 @@
         :to="{
           name: 'Ss',
           query: {
-            name: this.$route.query.name
-          }
+            name: this.$route.query.name,
+          },
         }"
       >
         <span
@@ -32,9 +32,9 @@
         <router-link
           :to="{
             name: 'Detail',
-            qurey: {
-              id: i._id
-            }
+            query: {
+              id: i._id,
+            },
           }"
         >
           <img :src="i.coverImg" alt="i.name" />
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       list: [],
-      page: 1
+      page: 1,
     };
   },
 
@@ -71,8 +71,8 @@ export default {
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

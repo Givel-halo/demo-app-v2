@@ -14,3 +14,7 @@ export function addTocart(product, amount = 1) {
 export function loadcart() {
   return get("/api/v1/shop_carts");
 }
+
+export function delcartid(ids) {
+  return post("/api/v1/shop_carts/delmany", { ids });
+}
