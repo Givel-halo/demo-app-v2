@@ -2,7 +2,12 @@
   <div class="ss">
     <div class="top">
       <van-icon @click="goback" class="mid" name="arrow-left" />
-      <input type="text" v-model="txt" @keyup.enter="add" />
+      <input
+        type="text"
+        v-model="txt"
+        @click="changeborder"
+        @keyup.enter="add"
+      />
       <van-icon class="mid" name="search" @click="add" />
     </div>
     <div class="history">
@@ -24,17 +29,18 @@
           <span><van-icon class="red" name="star-o" />热门搜索</span>
         </p>
         <div class="categories">
-          <div class="item" v-for="i in categories" :key="i._id">
+          <div class="item " v-for="(i, index) in categories" :key="i._id">
             <router-link
               :to="{
                 name: 'Search',
                 query: {
                   id: i._id,
-                  name: i.name
+                  name: i.name,
+                  index
                 }
               }"
             >
-              <span>{{ i.name }}</span>
+              <span :class="index == 3 ? 'active' : ''">{{ i.name }}</span>
             </router-link>
           </div>
         </div>
@@ -68,6 +74,11 @@ export default {
     }
   },
   methods: {
+    changeborder() {
+      const oinput = document.querySelector("input");
+      oinput.style.border = "1px solid #f57777";
+    },
+
     goback() {
       this.$router.go(-1);
     },
@@ -93,6 +104,9 @@ export default {
 </script>
 
 <style scoped>
+.h2 .item .active {
+  color: #ff5577;
+}
 .red {
   color: red;
 }

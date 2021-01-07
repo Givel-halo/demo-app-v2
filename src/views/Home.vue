@@ -3,14 +3,14 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'bb',
+          name: 'List'
         }"
       >
         <van-icon class="mid red" name="flower-o"
       /></router-link>
       <router-link
         :to="{
-          name: 'Ss',
+          name: 'Ss'
         }"
       >
         <span><van-icon class="sma" name="search" />羽绒服</span>
@@ -30,8 +30,8 @@
             name: 'Search',
             query: {
               id: i._id,
-              name: i.name,
-            },
+              name: i.name
+            }
           }"
           ><img :src="i.coverImg" :alt="i.name" />
           <p>{{ i.name }}</p>
@@ -49,14 +49,14 @@ export default {
   data() {
     return {
       categories: [],
-      banners: [],
+      banners: []
     };
   },
 
   async created() {
-    this.categories = await loadCategories().then((res) => res.data.categories);
+    this.categories = await loadCategories().then(res => res.data.categories);
     this.banners = banners.banners;
-  },
+  }
 };
 </script>
 <style scoped>
@@ -65,11 +65,11 @@ export default {
   justify-content: space-around;
   padding: 0.5rem 0;
   align-items: center;
+  /* margin-bottom: 3rem; */
 }
 .top span {
   width: 15rem;
   background: #eee;
-
   display: flex;
   height: 1.7rem;
   align-items: center;
@@ -91,14 +91,16 @@ export default {
 }
 
 .categories {
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-bottom: 1.2rem;
 }
 .item {
   width: 33%;
   border-radius: 50%;
-  height: 6rem;
+  /* height: 8rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;

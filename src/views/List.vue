@@ -13,16 +13,16 @@
       <van-icon class="mid" name="shopping-cart-o" />
     </div>
     <div class="contain">
-      <ul class="left">
-        <li
+      <div class="left">
+        <p
           :class="currentIndex == index ? 'bg' : ''"
           v-for="(i, index) in categories"
           :key="i._id"
           @click="inside(i._id, index)"
         >
-          {{ i.name }}
-        </li>
-      </ul>
+          <span :class="currentIndex == index ? 'bg1' : ''">{{ i.name }}</span>
+        </p>
+      </div>
       <div class="right">
         <div class="product">
           <div class="item" v-for="i in list" :key="i.name">
@@ -36,6 +36,10 @@
             >
               <img :src="i.coverImg" alt="i.name" />
               <p>{{ i.name }}</p>
+              <p>
+                <span>￥{{ i.price / 100 }}</span
+                ><van-icon name="star-o" />
+              </p>
             </router-link>
           </div>
         </div>
@@ -100,11 +104,17 @@ export default {
   margin-right: 0.3rem;
 }
 
-.bg {
-  color: white;
-  background: red;
+.left .bg {
+  color: #ff5577;
+  background: #ffff;
+  /* border-left: 2px solid #ff5577; */
+}
+.bg1 {
+  border-left: 4px solid #ff5577;
 }
 .contain {
+  border-top: 1px solid #eee;
+  padding-top: 0.2rem;
   display: flex;
   height: 580px;
   /* width: 100%; */
@@ -121,11 +131,17 @@ export default {
   background: #eee;
   /* border: 1px solid; */
 }
-.left li {
-  font-size: 1.2rem;
-  line-height: 2.4rem;
+.left p {
+  font-size: 0.9rem;
+  height: 4rem;
+  color: #666;
   text-align: center;
   width: 100%;
+}
+.left p span {
+  margin-top: 25%;
+  width: 100%;
+  display: inline-block;
 }
 .right {
   flex: 1;
@@ -141,17 +157,28 @@ export default {
   align-items: center;
 }
 .item {
-  width: 46%;
-  height: 11rem;
+  width: 45%;
 }
 .item img {
-  width: 100%;
+  width: 94%;
+  border-radius: 1rem;
+  height: 9rem;
 }
-.item p {
+.item p:nth-of-type(1) {
   overflow: hidden;
-  line-height: 2.6rem;
+  font-size: 0.8rem;
+  color: #333;
+  line-height: 1.8rem;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.item p:nth-of-type(2) {
+  display: flex;
+  justify-content: space-between;
+}
+.item p:nth-of-type(2) span {
+  color: #ff5577;
+  font-size: 18px;
 }
 .nn {
   height: 2.6rem;
