@@ -304,6 +304,7 @@
       style="width:93%;margin:0rem auto"
       color="rgba(255,87,119)"
       block
+      @click="tuichuclk"
       >退出登录</van-button
     >
     <div class="bottom"></div>
@@ -311,8 +312,19 @@
 </template>
 
 <script>
+import { removeToken } from "../utils/auth";
 export default {
   name: "User",
+  methods: {
+    async tuichuclk() {
+      this.$toast({
+        message: "已退出登录",
+        icon: "like",
+      });
+      const res = await removeToken();
+      console.log(res);
+    },
+  },
 };
 </script>
 

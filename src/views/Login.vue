@@ -2,7 +2,10 @@
   <div class="loginwrap">
     <div class="beforelogin" v-show="!isshow">
       <p class="dl">登录</p>
-      <button>微信登录</button>
+      <a
+        href="https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=716027609&pt_3rd_aid=201293&daid=383&pt_skey_valid=0&style=35&s_url=http%3A%2F%2Fconnect.qq.com&refer_cgi=authorize&which=&scope=all&display=mobile&response_type=code&redirect_uri=https%3A%2F%2Fportal.mogu.com%2Fuser-process%2Ftransition.html%3Fthird%3Dqq%26platform%3Dwap%26ptp%3D32.LLePO.0.0.Jy6S0wJp&state=TASunuh0utkk89d&client_id=201293&redirect_url=https%3A%2F%2Fh5.mogu.com%2Fpersonal-v2%2Findex.html%3Facm%3D3.mce.1_10_1jiv0.127180.0.yA8Epslsxjccs.pos_873-m_455426-sd_119-mf_4537_1211941-idx_3-mfs_4-dm1_5000%26ptp%3D32._mf1_1239_4537.0.0.uIIdTRio"
+        ><button>微信登录</button></a
+      >
       <p class="g"></p>
       <p @click="isshow = !isshow" class="qt">账号密码登录</p>
     </div>

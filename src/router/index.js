@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import { isLogined } from "./utils/auth";
+// import { isLogined } from "../utils/auth";
 Vue.use(VueRouter);
 
 const routes = [
@@ -43,9 +43,10 @@ const routes = [
     path: "/cart",
     name: "Cart",
     component: () => import("../views/Cart.vue"),
-    // meta: {
-    //   needLogin: true,
-    // },
+    meta: {
+      // needLogin: true,
+      hideNav: true,
+    },
   },
   {
     path: "/user",
@@ -53,6 +54,7 @@ const routes = [
     component: () => import("../views/User.vue"),
     meta: {
       needLogin: true,
+      hideNav: true,
     },
   },
   {

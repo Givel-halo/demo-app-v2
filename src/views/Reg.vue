@@ -10,8 +10,8 @@
     <div style="width:100%;">
       <router-link
         style="float: right;margin-top:1rem;padding-right:2.5rem;color:#666"
-        :to="{ name: 'Reg' }"
-        >注册账号</router-link
+        :to="{ name: 'Login' }"
+        >已有账号</router-link
       >
     </div>
   </div>

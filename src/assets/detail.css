@@ -145,9 +145,8 @@
 }
 .detail .con_top {
   position: absolute;
-  top: 4rem;
+  top: 0rem;
   left: 0;
-  z-index: 11;
   width: 100%;
   padding: 0 1.5rem;
   overflow: hidden;
