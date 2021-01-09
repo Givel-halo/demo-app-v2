@@ -33,24 +33,24 @@
         </div>
       </div>
     </div>
+    <!-- 头像 -->
     <div class="head-box">
       <div class="profile-box">
         <div class="link">
           <div class="user-avatar-wrap">
-            <a
-              href="https://h5.mogu.com/brand-content/personal-homepage.html?uid=1bm2sm4"
-              ><div class="user-avatar">
-                <img
-                  src="http://s5.mogucdn.com/mlcdn/5abf39/180814_3kg2a421c73776bbb370c903g28k1_100x100.jpg_160x160.jpg"
-                />
+            <router-link :to="{ name: 'Info' }">
+              <div class="user-avatar">
+                <img :src="userinfo.avatar" />
               </div>
               <img
                 src="https://s10.mogucdn.com/mlcdn/c45406/190627_1i49i2a2cj6fll5bh25l07d53l008_72x72.png"
                 class="user-level"
-            /></a>
+            /></router-link>
           </div>
           <div class="user-info">
-            <p class="user-name">失之我命199306<!----></p>
+            <p class="user-name">
+              {{ userinfo.nickName }}
+            </p>
             <a href="https://act.mogu.com/huiyuanzhongxin"
               ><div
                 class="user-member"
@@ -123,7 +123,7 @@
         style='background: url("https://s10.mogucdn.com/mlcdn/c45406/190815_3637hh8ac09e50j7f07i7eealck4i_513x360.png") 0px 0px / 3.42em 2.4em no-repeat;'
         ><div class="cart-large-name">购物车</div>
         <div class="cart-large-desc">
-          1件商品
+          {{ cartlength }}件商品
           <img
             src="https://s10.mogucdn.com/mlcdn/c45406/190819_82kf4j7kdldbf0654hf987dk24kj4_10x18.png"
             class="cart-large-arrow"
@@ -313,16 +313,34 @@
 
 <script>
 import { removeToken } from "../utils/auth";
+import { loadcart } from "../services/shop_cart";
+import { loaduser } from "../services/user";
 export default {
   name: "User",
+  data() {
+    return {
+      cartlength: "",
+      userinfo: {},
+    };
+  },
+  async created() {
+    //加载购物车数量
+    const res = await loadcart();
+    // console.log(res.data.length);
+    this.cartlength = res.data.length;
+    //加载用户信息
+    const info = await loaduser();
+    console.log(info.data);
+    this.userinfo = info.data;
+  },
   methods: {
     async tuichuclk() {
       this.$toast({
         message: "已退出登录",
-        icon: "like",
+        icon: "fail",
       });
-      const res = await removeToken();
-      console.log(res);
+      await removeToken();
+      // console.log(res);
     },
   },
 };

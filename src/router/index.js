@@ -49,6 +49,15 @@ const routes = [
     },
   },
   {
+    path: "/userinfp",
+    name: "Info",
+    component: () => import("../views/Info.vue"),
+    meta: {
+      // needLogin: true,
+      hideNav: true,
+    },
+  },
+  {
     path: "/user",
     name: "User",
     component: () => import("../views/User.vue"),

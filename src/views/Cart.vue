@@ -32,33 +32,44 @@
         <div class="cartone" v-show="length > 0">
           <div class="con">
             <div class="li" v-for="item in list" :key="item._id">
-              <van-checkbox class="dan" v-model="item.checked" label-disabled>
-                店铺
-              </van-checkbox>
-              <van-checkbox
-                class="danleft"
-                v-model="item.checked"
-                label-disabled
-              />
-              <van-card
-                :price="(item.product.price / 100).toFixed(2)"
-                desc=""
-                :title="item.product.name"
-                :thumb="item.product.coverImg"
-                @click-thumb="imgclk(item.product._id)"
-                class="carts"
-              >
-                <!-- 按钮组 -->
-                <template #footer>
-                  <van-stepper
-                    v-model="item.quantity"
-                    button-size="22"
-                    disable-input
-                    @plus="plusclk(item.product._id, 1)"
-                    @minus="plusclk(item.product._id, -1)"
+              <van-swipe-cell>
+                <van-checkbox class="dan" v-model="item.checked" label-disabled>
+                  店铺
+                </van-checkbox>
+                <van-checkbox
+                  class="danleft"
+                  v-model="item.checked"
+                  label-disabled
+                />
+
+                <van-card
+                  :price="(item.product.price / 100).toFixed(2)"
+                  desc=""
+                  :title="item.product.name"
+                  :thumb="item.product.coverImg"
+                  @click-thumb="imgclk(item.product._id)"
+                  class="carts"
+                >
+                  <!-- 按钮组 -->
+                  <template #footer>
+                    <van-stepper
+                      v-model="item.quantity"
+                      button-size="22"
+                      disable-input
+                      @plus="plusclk(item.product._id, 1)"
+                      @minus="plusclk(item.product._id, -1)"
+                    />
+                  </template> </van-card
+                ><template #right>
+                  <van-button
+                    square
+                    text="删除"
+                    type="danger"
+                    class="delete-button"
+                    @click="delone(item._id)"
                   />
                 </template>
-              </van-card>
+              </van-swipe-cell>
             </div>
             <div class="bott"></div>
           </div>
@@ -115,7 +126,12 @@
 </template>
 
 <script>
-import { loadcart, addTocart, delcartid } from "../services/shop_cart";
+import {
+  loadcart,
+  addTocart,
+  delcartid,
+  deloneid,
+} from "../services/shop_cart";
 export default {
   name: "Cart",
   async created() {
@@ -165,6 +181,10 @@ export default {
     },
   },
   methods: {
+    async delone(id) {
+      await deloneid(id);
+      this.maincart();
+    },
     //下拉加载成功
     async onRefresh() {
       await setTimeout(() => {
@@ -233,6 +253,9 @@ export default {
 </script>
 
 <style scoped>
+.delete-button {
+  height: 100%;
+}
 .cart .carttwo {
   height: 38rem;
 }

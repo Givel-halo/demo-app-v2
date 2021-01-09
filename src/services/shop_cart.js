@@ -1,4 +1,4 @@
-import { get, post } from "../utils/request";
+import { get, post, del } from "../utils/request";
 
 /**
  *加入购物车
@@ -14,7 +14,16 @@ export function addTocart(product, amount = 1) {
 export function loadcart() {
   return get("/api/v1/shop_carts");
 }
-
+/**
+ * 删除多条商品
+ * @param {*} ids
+ */
 export function delcartid(ids) {
   return post("/api/v1/shop_carts/delmany", { ids });
+}
+/**
+ * 删除单条商品
+ */
+export function deloneid(id) {
+  return del(`/api/v1/shop_carts/${id}`);
 }
