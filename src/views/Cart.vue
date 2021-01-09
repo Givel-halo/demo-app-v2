@@ -32,6 +32,7 @@
         <div class="cartone" v-show="length > 0">
           <div class="con">
             <div class="li" v-for="item in list" :key="item._id">
+              <!-- 滑动范围 -->
               <van-swipe-cell>
                 <van-checkbox class="dan" v-model="item.checked" label-disabled>
                   店铺
@@ -41,7 +42,7 @@
                   v-model="item.checked"
                   label-disabled
                 />
-
+                <!-- 商品 -->
                 <van-card
                   :price="(item.product.price / 100).toFixed(2)"
                   desc=""
@@ -50,7 +51,7 @@
                   @click-thumb="imgclk(item.product._id)"
                   class="carts"
                 >
-                  <!-- 按钮组 -->
+                  <!-- 按钮组加减 -->
                   <template #footer>
                     <van-stepper
                       v-model="item.quantity"
@@ -59,8 +60,10 @@
                       @plus="plusclk(item.product._id, 1)"
                       @minus="plusclk(item.product._id, -1)"
                     />
-                  </template> </van-card
-                ><template #right>
+                  </template>
+                </van-card>
+                <!-- 滑动删除一个 -->
+                <template #right>
                   <van-button
                     square
                     text="删除"
@@ -181,6 +184,7 @@ export default {
     },
   },
   methods: {
+    //删除单个
     async delone(id) {
       await deloneid(id);
       this.maincart();

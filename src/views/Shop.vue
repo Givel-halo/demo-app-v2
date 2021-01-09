@@ -3,14 +3,14 @@
     <div class="top">
       <router-link
         :to="{
-          name: 'List'
+          name: 'List',
         }"
       >
         <van-icon class="mid red" name="flower-o"
       /></router-link>
       <router-link
         :to="{
-          name: 'Ss'
+          name: 'Ss',
         }"
       >
         <span><van-icon class="sma" name="search" />羽绒服</span>
@@ -50,8 +50,8 @@
             name: 'Search',
             query: {
               id: i._id,
-              name: i.name
-            }
+              name: i.name,
+            },
           }"
           ><img :src="i.coverImg" :alt="i.name" />
           <p>{{ i.name }}</p>
@@ -71,8 +71,8 @@
             :to="{
               name: 'Detail',
               query: {
-                id: i._id
-              }
+                id: i._id,
+              },
             }"
           >
             <img :src="i.coverImg" alt="i.name" />
@@ -86,7 +86,7 @@
           </router-link>
         </div>
       </div>
-      <button @click="loadmore">加载更多</button>
+      <button class="btnmore" @click="loadmore">加载更多</button>
     </div>
     <div class="nn"></div>
   </div>
@@ -102,12 +102,12 @@ export default {
       categories: [],
       list: [],
       page: 1,
-      time: 30 * 60 * 60 * 1000
+      time: 30 * 60 * 60 * 1000,
       // timeData: { hours: 3, minutes: 8, seconds: 9 }
     };
   },
   async created() {
-    this.categories = await loadCategories().then(res => res.data.categories);
+    this.categories = await loadCategories().then((res) => res.data.categories);
     this.loadmore();
   },
   methods: {
@@ -116,12 +116,19 @@ export default {
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
+.btnmore {
+  border: none;
+  width: 100%;
+  height: 3rem;
+  background: #ff5777;
+  color: #fff;
+}
 .top {
   display: flex;
   justify-content: space-around;
@@ -132,11 +139,14 @@ export default {
 }
 .top span {
   width: 15rem;
-  background: #eee;
+  background: #eeeeee1f;
   display: flex;
-  height: 1.9rem;
+  height: 1.7rem;
   align-items: center;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid #cecece;
+  border-radius: 3rem;
+  padding-left: 0.5rem;
 }
 .mid {
   font-size: 1.7rem;
@@ -145,6 +155,7 @@ export default {
   font-size: 1rem;
   display: inline-block;
   margin-right: 0.3rem;
+  padding-left: 0.4rem;
 }
 .red {
   color: red;
@@ -179,25 +190,25 @@ export default {
 }
 
 .categories {
-  display: flex;
   margin-top: 0.5rem;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: space-between;
-  height: 100%;
-  padding-bottom: 1.2rem;
+  padding: 1rem 0.5rem;
 }
 
 .item {
-  width: 33%;
-  border-radius: 50%;
-  height: 8rem;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   font-size: 0.3rem;
-  /* margin-bottom: 6rem; */
+  border: 1px solid #cecece;
+  text-align: center;
+  margin: 0.2rem 0;
+  border-radius: 10%;
+  background: rgb(231, 250, 250);
 }
 .item p {
   width: 100%;
@@ -205,8 +216,8 @@ export default {
 }
 .item img {
   width: 86%;
-  background: oldlace;
-  border-radius: 50%;
+  background: rgb(231, 250, 250);
+  border-radius: 20%;
 }
 .like {
   background: #eee;
@@ -214,7 +225,6 @@ export default {
 }
 .like .tp {
   width: 100%;
-  height: 2.2rem;
 }
 
 .product {

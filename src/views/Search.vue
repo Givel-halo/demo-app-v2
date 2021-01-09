@@ -6,8 +6,8 @@
         :to="{
           name: 'Ss',
           query: {
-            name: this.$route.query.name
-          }
+            name: this.$route.query.name,
+          },
         }"
       >
         <span
@@ -35,8 +35,8 @@
           :to="{
             name: 'Detail',
             query: {
-              id: i._id
-            }
+              id: i._id,
+            },
           }"
         >
           <img :src="i.coverImg" alt="i.name" />
@@ -48,7 +48,7 @@
         </router-link>
       </div>
     </div>
-    <button @click="loadMore">加载更多</button>
+    <button class="btnmore" @click="loadMore">加载更多</button>
     <div class="nn"></div>
   </div>
 </template>
@@ -61,7 +61,7 @@ export default {
     return {
       list: [],
       page: 1,
-      currentIndex: 0
+      currentIndex: 0,
     };
   },
 
@@ -102,7 +102,7 @@ export default {
       console.log(min);
       console.log(max);
       this.list = this.list.filter(
-        item => item.price / 100 >= min && item.price / 100 <= max
+        (item) => item.price / 100 >= min && item.price / 100 <= max
       );
       console.log(this.list);
     },
@@ -115,11 +115,19 @@ export default {
       // console.log(res);
       this.page++;
       this.list = [...this.list, ...res.data.products];
-    }
-  }
+      // console.log(this.page);
+    },
+  },
 };
 </script>
 <style scoped>
+.btnmore {
+  border: none;
+  width: 100%;
+  height: 3rem;
+  background: #ff5777;
+  color: #fff;
+}
 .coll {
   background: #ff5777;
   color: white;
@@ -136,18 +144,22 @@ export default {
 }
 .top span {
   width: 15rem;
-  background: #eee;
+  background: #eeeeee1f;
   display: flex;
   height: 1.7rem;
   align-items: center;
   font-size: 0.6rem;
+  border: 1px solid #cecece;
+  border-radius: 3rem;
 }
 .mid {
   font-size: 1.7rem;
 }
 .sma {
+  width: 40%;
   font-size: 1rem;
   margin-right: 0.3rem;
+  padding-left: 0.4rem;
 }
 
 .nav {
@@ -158,10 +170,13 @@ export default {
 }
 .nav span {
   display: inline-block;
-  padding: 0 2rem;
+  padding: 0 1.9rem;
   font-size: 0.9rem;
   color: #333;
   border-right: 1px solid #eee;
+}
+.nav span:nth-last-of-type(1) {
+  border: 0;
 }
 .price {
   padding: 0.7rem 0;
@@ -184,23 +199,22 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  padding-left: 0.4rem;
 }
 .product .i {
   width: 48%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
-  /* align-items: ; */
+  justify-content: center;
+  padding: 0.2rem;
 }
 .product span {
   font-size: 0.6rem;
 }
 .product img {
   width: 96%;
-  height: 12.5rem;
   border-radius: 4%;
-  /* height: 6rem; */
 }
 .product p:nth-of-type(2) {
   display: flex;

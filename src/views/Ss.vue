@@ -4,7 +4,7 @@
       <van-icon @click="goback" class="mid" name="arrow-left" />
       <input
         type="text"
-        v-model="txt"
+        v-model.trim="txt"
         @click="changeborder"
         @keyup.enter="add"
       />
@@ -17,9 +17,11 @@
           ><van-icon class="sma" name="delete-o" @click="del" />
         </p>
         <div class="con">
-          <span v-for="i in res" :key="i">
+          <span v-for="i in res" :key="i" style="float:left">
             <router-link :to="{ name: 'Search', query: { name: i } }"
-              ><span>{{ i }}</span></router-link
+              ><span style="border:1px solid #cecece;display:block;">{{
+                i
+              }}</span></router-link
             ></span
           >
         </div>
@@ -36,11 +38,15 @@
                 query: {
                   id: i._id,
                   name: i.name,
-                  index
-                }
+                  index,
+                },
               }"
             >
-              <span :class="index == 3 ? 'active' : ''">{{ i.name }}</span>
+              <span
+                style="border:1px solid #cecece;padding:0.3rem 0.4rem;font-size:0.9rem;color:#666"
+                :class="index == 3 ? 'active' : ''"
+                >{{ i.name }}</span
+              >
             </router-link>
           </div>
         </div>
@@ -59,19 +65,19 @@ export default {
       txt: this.$route.query.name,
       list: [],
       categories: [],
-      res: JSON.parse(localStorage.getItem("list"))
+      res: JSON.parse(localStorage.getItem("list")),
     };
   },
   async created() {
     if (localStorage.getItem("list")) {
       this.list = JSON.parse(localStorage.getItem("list"));
     }
-    this.categories = await loadCategories().then(res => res.data.categories);
+    this.categories = await loadCategories().then((res) => res.data.categories);
   },
   watch: {
     $route() {
       this.del();
-    }
+    },
   },
   methods: {
     changeborder() {
@@ -83,23 +89,32 @@ export default {
       this.$router.go(-1);
     },
     add() {
-      if (this.list.indexOf(this.txt) == -1) {
-        this.list.push(this.txt);
-      }
-      localStorage.setItem("list", JSON.stringify(this.list));
-      this.$router.push({
-        name: "Search",
-        query: {
-          name: this.txt
+      if (this.txt.length > 0) {
+        if (this.list.indexOf(this.txt) == -1) {
+          this.list.push(this.txt);
         }
-      });
+        localStorage.setItem("list", JSON.stringify(this.list));
+        this.$router.push({
+          name: "Search",
+          query: {
+            name: this.txt,
+          },
+        });
+      } else {
+        alert("请输入查找商品信息");
+      }
     },
 
     del() {
-      alert("确定删除吗");
-      localStorage.removeItem("list");
-    }
-  }
+      if (localStorage.getItem("list")) {
+        alert("确定删除吗");
+        localStorage.removeItem("list");
+        window.location.reload();
+      } else {
+        alert("历史记录消失了呢");
+      }
+    },
+  },
 };
 </script>
 
@@ -120,27 +135,31 @@ export default {
   width: 15rem;
   border: 1px solid;
   display: flex;
-  border-radius: 5%;
+  border-radius: 3rem;
   height: 1.7rem;
   align-items: center;
   font-size: 0.7rem;
+  padding-left: 0.6rem;
 }
 .mid {
   font-size: 1.7rem;
+  color: #999;
 }
 .sma {
   font-size: 1.3rem;
   display: inline-block;
 }
-.history {
-  margin-top: 1rem;
-}
 .h1 {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  padding: 0.6rem;
+}
+.h2 {
+  padding: 0.6rem;
 }
 .history p span {
   font-size: 1.2rem;
+  color: #999;
 }
 .history p {
   display: flex;
@@ -162,8 +181,9 @@ p span {
   justify-content: flex-start;
 }
 .con span {
-  width: 2.3rem;
+  padding: 0.3rem;
   font-size: 0.9rem;
+  height: 1.8rem;
 }
 .categories {
   display: flex;

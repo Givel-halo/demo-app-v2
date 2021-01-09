@@ -340,6 +340,7 @@ export default {
         icon: "fail",
       });
       await removeToken();
+      window.location.reload();
       // console.log(res);
     },
   },

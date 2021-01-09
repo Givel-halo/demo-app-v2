@@ -62,9 +62,9 @@ export default {
   },
   methods: {
     goback() {
-      this.$route.go(-1);
-    }
-  }
+      window.history.back();
+    },
+  },
 };
 </script>
 

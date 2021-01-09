@@ -4,7 +4,7 @@
       <van-icon class="mid red" name="chat-o" />
       <router-link
         :to="{
-          name: 'Ss'
+          name: 'Ss',
         }"
       >
         <span><van-icon class="sma" name="search" />羽绒服</span>
@@ -30,8 +30,8 @@
               :to="{
                 name: 'Detail',
                 query: {
-                  id: i._id
-                }
+                  id: i._id,
+                },
               }"
             >
               <img :src="i.coverImg" alt="i.name" />
@@ -59,25 +59,27 @@ export default {
       categories: [],
       list: [],
       id: "",
-      currentIndex: 0
+      currentIndex: 0,
     };
   },
   async created() {
-    this.categories = await loadCategories().then(res => res.data.categories);
-    this.list = await loadProductsAPI(this.id).then(res => res.data.products);
+    this.categories = await loadCategories().then((res) => res.data.categories);
+    this.list = await loadProductsAPI(this.id).then((res) => res.data.products);
   },
   watch: {
     $route() {
       this.inside(this.id);
-    }
+    },
   },
   methods: {
     async inside(id, index) {
       this.currentIndex = index;
       this.id = id;
-      this.list = await loadProductsAPI(this.id).then(res => res.data.products);
-    }
-  }
+      this.list = await loadProductsAPI(this.id).then(
+        (res) => res.data.products
+      );
+    },
+  },
 };
 </script>
 
@@ -126,7 +128,8 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 25%;
+  width: 20%;
+  line-height: 1.8rem;
   height: 100%;
   background: #eee;
   /* border: 1px solid; */
@@ -158,11 +161,11 @@ export default {
 }
 .item {
   width: 45%;
+  padding: 0.2rem;
 }
 .item img {
   width: 94%;
   border-radius: 1rem;
-  height: 9rem;
 }
 .item p:nth-of-type(1) {
   overflow: hidden;
