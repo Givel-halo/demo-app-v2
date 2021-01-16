@@ -65,7 +65,7 @@ export default {
           )
           .then((res) => res.data);
         console.log(res.info);
-        this.user.avatar = "http://api.cat-shop.penkuoer.com" + res.info;
+        this.user.avatar = "https://api.cat-shop.penkuoer.com" + res.info;
         // console.log(this.user.avatar);
         alert("保存成功");
       } else {
