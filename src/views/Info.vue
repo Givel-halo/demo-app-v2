@@ -60,7 +60,7 @@ export default {
         formData.append("file", this.fileList[0].file);
         const res = await axios
           .post(
-            "http://api.cat-shop.penkuoer.com/api/v1/common/file_upload",
+            "https://api.cat-shop.penkuoer.com/api/v1/common/file_upload",
             formData
           )
           .then((res) => res.data);
