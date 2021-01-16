@@ -23,7 +23,7 @@
       <hr />
       上传头像： <van-uploader v-model="fileList" multiple :max-count="1" />
       <hr />
-      <van-button type="primary" block @click="aa">保存</van-button>
+      <van-button type="primary" color="#ff5777" block @click="aa">保存</van-button>
     </div>
   </div>
 </template>
@@ -44,10 +44,9 @@ export default {
   async created() {
     const res = await loaduser();
     console.log(res);
-    this.user = res;
+    this.user = res.data;
     //浏览之前用户修改前的图片
-    this.fileList[0].url =
-      "http://api.cat-shop.penkuoer.com" + this.user.avatar;
+    this.fileList[0].url = this.user.avatar;
   },
   methods: {
     onClickLeft() {
