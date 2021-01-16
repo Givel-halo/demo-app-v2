@@ -4,7 +4,7 @@ import "nprogress/nprogress.css";
 import { getToken } from "./auth";
 
 const instance = axios.create({
-  baseURL: "http://api.cat-shop.penkuoer.com",
+  baseURL: "https://api.cat-shop.penkuoer.com",
   timeout: 5000,
 });
 //全局请求拦截，所有的请求发起之前做
